@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ChuckNorris_ApiTest
 {
-	public class JokeEntry
+	public class JokeEntry : CommonOps
 	{
 		public JArray Categories { get; set; }
 		public string Created_at { get; set; }

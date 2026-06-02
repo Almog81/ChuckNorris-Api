@@ -2,12 +2,12 @@
 using NUnit.Framework;
 using RestSharp;
 using System.Text.Json.Nodes;
-
+using static ChuckNorris_ApiTest.WebAction;
 
 namespace ChuckNorris_ApiTest;
 
 [TestFixture]
-public class Tests : Base
+public class APITests : CommonOps
 {
       
     [OneTimeSetUp]
@@ -59,7 +59,7 @@ public class Tests : Base
 	}
 
     [Test]
-    public void Test04_RandomJokes()
+    public void Test04_MovieJokes_WebTest()
     {
 		JObject randomMovieJoke = GetRandomJoke("movie");
 		JokeEntry movieJoke = new JokeEntry
@@ -69,8 +69,7 @@ public class Tests : Base
 			Value = (string)randomMovieJoke["value"]
 		};
         Assert.That(movieJoke.Categories.ToString().Contains("movie"), Is.True);
-		Console.WriteLine(movieJoke.Url);
-        Console.WriteLine(movieJoke.Value);
+		WebTest(movieJoke.Url, movieJoke.Value);
 	}
 
     [OneTimeTearDown]
